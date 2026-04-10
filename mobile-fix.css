@@ -1,0 +1,46 @@
+﻿/* Mobile Image Optimizations */
+
+/* Zorg dat afbeeldingen responsive zijn */
+img {
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
+
+/* Mobile breakpoints */
+@media screen and (max-width: 768px) {
+  /* Hero afbeeldingen */
+  [class*="hero"] img,
+  img[src*="hero"] {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+  
+  /* City afbeeldingen */
+  [class*="city"] img,
+  img[src*="city"] {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+  }
+  
+  /* Alle afbeeldingen in grids/cards */
+  .grid img,
+  .card img,
+  [class*="grid"] img,
+  [class*="card"] img {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* Extra kleine schermen */
+@media screen and (max-width: 480px) {
+  img {
+    width: 100% !important;
+    max-height: 250px !important;
+    object-fit: cover !important;
+  }
+}
