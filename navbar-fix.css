@@ -437,4 +437,19 @@
     padding: 1.75rem 1.5rem !important;
     margin-top: 2.5rem !important;
   }
+
+  /* 6. Apply the same premium frost values to ALL .glass-card elements
+        on the homepage so the slider card (#implementation) and the
+        system-flow card use the exact same look as the hero "How It
+        Works" card. The base bundled CSS has blur(12px) and a slightly
+        cooler dark; bump to blur(18px) saturate(140%) and rgba(15,17,22,
+        0.55) for visual consistency. Mobile only — desktop is unchanged
+        per the user's "perfect" sign-off. */
+  .glass-card {
+    background: rgba(15, 17, 22, 0.55) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+    backdrop-filter: blur(18px) saturate(140%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 1.25rem !important;
+  }
 }
