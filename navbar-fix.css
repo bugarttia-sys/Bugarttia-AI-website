@@ -7,22 +7,22 @@
     align-items: center !important;
     padding: 1rem !important;
   }
-  
+
   nav > *, header > *, [class*="nav"] > *, [class*="header"] > * {
     flex-shrink: 0 !important;
   }
-  
+
   /* First element (logo) - LEFT */
-  nav > *:first-child, 
+  nav > *:first-child,
   header > *:first-child,
   nav > a:first-of-type,
   header > a:first-of-type {
     margin-right: auto !important;
     order: 0 !important;
   }
-  
+
   /* Last element (menu button) - RIGHT */
-  nav > *:last-child, 
+  nav > *:last-child,
   header > *:last-child,
   nav > button:last-of-type,
   header > button:last-of-type {
@@ -32,528 +32,134 @@
 }
 
 /* ============================================
-   7-DAY DEPLOYMENT SLIDER - MOBILE RESPONSIVE
+   7-DAY DEPLOYMENT SLIDER — Mobile/Tablet
+   Vertical Roadmap (max-width: 1023px)
+
+   Targets the real DOM of <ImplementationSection>
+   (src/sections/ImplementationSection.tsx, minified to Z5):
+
+       section#implementation
+         └── div.glass-card
+               └── div (flex row of step cards)
+                     └── div.timeline-step  ×7
+                           ├── div          ← circle wrapper
+                           │     └── span   ← day number
+                           ├── div.hidden.lg:block  (desktop connector — already display:none)
+                           ├── span         ← title  (1st span sibling)
+                           ├── span         ← description (2nd span sibling)
+                           └── div          ← LIVE badge (only on last step)
+
+   Desktop ≥1024 is untouched (handled by GSAP scroll-pin path inside Z5,
+   which itself is gated on `if (window.innerWidth < 1024) return`).
    ============================================ */
 
-@media (max-width: 768px) {
-  
-  /* 1. Headline & Subheadline Centered */
-  [class*="deployment"],
-  [class*="strategic"],
-  section:has([class*="7 days"]),
-  section:has([class*="deployment"]) {
-    text-align: center !important;
-  }
-  
-  [class*="deployment"] h2,
-  [class*="strategic"] h2,
-  [class*="deployment"] [class*="title"],
-  [class*="strategic"] [class*="title"] {
-    text-align: center !important;
-    font-size: 1.5rem !important;
-    line-height: 1.3 !important;
-    margin-bottom: 0.5rem !important;
-  }
-  
-  [class*="deployment"] p,
-  [class*="strategic"] p {
-    text-align: center !important;
-    font-size: 0.9rem !important;
-    max-width: 90% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-  
-  /* 2. The 7 Steps Timeline - Vertical Layout */
-  [class*="timeline"],
-  [class*="slider"],
-  [class*="steps"]:has([class*="1"], [class*="2"], [class*="3"], [class*="4"], [class*="5"], [class*="6"], [class*="7"]) {
+@media (max-width: 1023px) {
+
+  /* 1. Container — kill horizontal scroll, stack vertically */
+  #implementation .glass-card > div:first-child {
     display: flex !important;
     flex-direction: column !important;
-    gap: 1.5rem !important;
-    padding: 1rem !important;
-  }
-  
-  /* Each step item */
-  [class*="timeline"] > *,
-  [class*="slider"] > *,
-  [class*="steps"] > * {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-    gap: 0.5rem !important;
-  }
-  
-  /* 3. Centered Circles (Numbers) */
-  [class*="timeline"] .rounded-full,
-  [class*="slider"] .rounded-full,
-  [class*="steps"] .rounded-full,
-  [class*="timeline"] [class*="circle"],
-  [class*="slider"] [class*="circle"],
-  [class*="steps"] [class*="w-12"],
-  [class*="steps"] [class*="number"] {
-    width: 48px !important;
-    height: 48px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 1.25rem !important;
-    font-weight: 700 !important;
-    border-radius: 50% !important;
-    margin: 0 auto !important;
-    flex-shrink: 0 !important;
-  }
-  
-  /* Active/Current step (green) */
-  [class*="timeline"] .rounded-full[class*="active"],
-  [class*="steps"] .bg-lime-400,
-  [class*="steps"] .text-black {
-    background: #a3e635 !important;
-    color: #000 !important;
-  }
-  
-  /* Inactive steps */
-  [class*="timeline"] .rounded-full:not([class*="active"]),
-  [class*="steps"] .border-white\/20 {
-    background: transparent !important;
-    border: 2px solid rgba(255,255,255,0.2) !important;
-    color: #fff !important;
-  }
-  
-  /* 4. Centered Text Below Circles */
-  [class*="timeline"] h3,
-  [class*="slider"] h3,
-  [class*="steps"] h3 {
-    font-size: 0.85rem !important;
-    font-weight: 600 !important;
-    text-align: center !important;
-    margin-top: 0.5rem !important;
-    line-height: 1.3 !important;
-  }
-  
-  [class*="timeline"] p,
-  [class*="slider"] p,
-  [class*="steps"] p {
-    font-size: 0.75rem !important;
-    color: rgba(255,255,255,0.6) !important;
-    text-align: center !important;
-    line-height: 1.4 !important;
-  }
-  
-  /* 5. Adequate gap between stacked items */
-  [class*="timeline"] > * + *,
-  [class*="slider"] > * + *,
-  [class*="steps"] > * + * {
-    margin-top: 1rem !important;
-    padding-top: 1rem !important;
-    border-top: 1px solid rgba(255,255,255,0.1) !important;
-  }
-  
-  /* Remove horizontal scroll behavior */
-  [class*="overflow-x"],
-  [class*="scroll"] {
+    gap: 2.5rem !important;
     overflow-x: visible !important;
-    overflow-y: visible !important;
-  }
-}
-
-
-/* ============================================
-   EMERGENCY FIX - VERTICAL ROADMAP LAYOUT
-   Enterprise Mobile (max-width: 768px)
-   ============================================ */
-
-@media (max-width: 768px) {
-  
-  /* 1. CONTAINER - Vertical Block Layout */
-  [class*="timeline"],
-  [class*="slider"],
-  [class*="deployment"] [class*="steps"],
-  section:has([class*="7"]) [class*="flex"],
-  section:has([class*="deployment"]) [class*="grid"] {
-    display: block !important;
-    flex-direction: unset !important;
-    overflow-x: visible !important;
-    width: 100% !important;
-    padding: 0 1rem !important;
-  }
-  
-  /* HIDE Horizontal connecting lines */
-  [class*="timeline"] [class*="line"],
-  [class*="slider"] [class*="line"],
-  [class*="timeline"]::before,
-  [class*="timeline"]::after,
-  [class*="slider"]::before,
-  [class*="slider"]::after {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-  }
-  
-  /* 2. EACH STEP - Flex Layout with Number Left, Text Right */
-  [class*="timeline"] > *,
-  [class*="slider"] > *,
-  [class*="steps"] > *,
-  [class*="deployment"] [class*="flex"] > * {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    text-align: left !important;
-    gap: 1rem !important;
-    margin-bottom: 24px !important;
-    padding: 0 !important;
-    width: 100% !important;
-  }
-  
-  /* 3. LEFT SIDE - Fixed Width Circle */
-  [class*="timeline"] .rounded-full,
-  [class*="slider"] .rounded-full,
-  [class*="steps"] .rounded-full,
-  [class*="timeline"] [class*="circle"],
-  [class*="slider"] [class*="circle"],
-  [class*="steps"] [class*="number"],
-  [class*="timeline"] [class*="w-12"],
-  [class*="slider"] [class*="w-12"],
-  [class*="steps"] [class*="w-12"] {
-    width: 40px !important;
-    height: 40px !important;
-    min-width: 40px !important;
-    min-height: 40px !important;
-    max-width: 40px !important;
-    max-height: 40px !important;
-    flex-shrink: 0 !important;
-    flex-grow: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 1rem !important;
-    font-weight: 700 !important;
-    border-radius: 50% !important;
-    margin: 0 !important;
-  }
-  
-  /* Active step (green) */
-  [class*="timeline"] .bg-lime-400,
-  [class*="slider"] .bg-lime-400,
-  [class*="steps"] .bg-lime-400,
-  [class*="timeline"] [class*="active"],
-  [class*="slider"] [class*="active"] {
-    background: #a3e635 !important;
-    color: #000 !important;
-    border: none !important;
-  }
-  
-  /* Inactive steps */
-  [class*="timeline"] .border-white\/20,
-  [class*="slider"] .border-white\/20,
-  [class*="steps"] .border-white\/20 {
-    background: transparent !important;
-    border: 2px solid rgba(255,255,255,0.2) !important;
-    color: #fff !important;
-  }
-  
-  /* 4. RIGHT SIDE - Text Container */
-  [class*="timeline"] > * > div:not(.rounded-full):not([class*="circle"]),
-  [class*="slider"] > * > div:not(.rounded-full):not([class*="circle"]),
-  [class*="steps"] > * > div:not(.rounded-full):not([class*="circle"]) {
-    flex: 1 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
-    min-height: 40px !important;
-  }
-  
-  /* 5. TYPOGRAPHY - Left Aligned with Hierarchy */
-  
-  /* Title - Bold and Clear */
-  [class*="timeline"] h3,
-  [class*="slider"] h3,
-  [class*="steps"] h3,
-  [class*="timeline"] [class*="title"],
-  [class*="slider"] [class*="title"],
-  [class*="steps"] [class*="font-semibold"],
-  [class*="timeline"] > * > div:last-child > *:first-child,
-  [class*="slider"] > * > div:last-child > *:first-child {
-    font-size: 1rem !important;
-    font-weight: 700 !important;
-    text-align: left !important;
-    margin: 0 0 4px 0 !important;
-    line-height: 1.3 !important;
-    color: #fff !important;
-  }
-  
-  /* Subtext - Smaller and Grey */
-  [class*="timeline"] p,
-  [class*="slider"] p,
-  [class*="steps"] p,
-  [class*="timeline"] [class*="text-gray"],
-  [class*="slider"] [class*="text-gray"],
-  [class*="steps"] [class*="text-sm"],
-  [class*="timeline"] > * > div:last-child > *:last-child,
-  [class*="slider"] > * > div:last-child > *:last-child {
-    font-size: 0.875rem !important;
-    font-weight: 400 !important;
-    text-align: left !important;
-    color: rgba(255,255,255,0.5) !important;
-    margin: 0 !important;
-    line-height: 1.4 !important;
-  }
-  
-  /* Last step - remove bottom margin */
-  [class*="timeline"] > *:last-child,
-  [class*="slider"] > *:last-child,
-  [class*="steps"] > *:last-child {
-    margin-bottom: 0 !important;
-  }
-  
-  /* Headline styling */
-  [class*="deployment"] h2,
-  [class*="strategic"] h2,
-  section:has([class*="7"]) h2 {
-    font-size: 1.5rem !important;
-    text-align: left !important;
-    margin-bottom: 2rem !important;
-    padding: 0 1rem !important;
-  }
-}
-
-
-/* ============================================
-   MOBILE RESPONSIVENESS REFACTOR
-   Vertical Roadmap (max-width: 768px)
-   ============================================ */
-
-@media (max-width: 768px) {
-  
-  /* ========================================
-     1. STRUCTURAL REFACTOR
-     ======================================== */
-  
-  /* Container: Vertical Layout */
-  [class*="timeline"],
-  [class*="slider"],
-  [class*="deployment"] [class*="steps"],
-  section:has([class*="7"]) [class*="flex"],
-  section:has([class*="deployment"]) > div:last-child {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    width: 100% !important;
-    padding: 0 1.25rem !important;
-    gap: 0 !important;
-  }
-  
-  /* Remove horizontal scroll */
-  [class*="overflow-x-auto"],
-  [class*="overflow-x-scroll"],
-  [class*="overflow-x"] {
-    overflow-x: visible !important;
-    overflow: visible !important;
-  }
-  
-  /* Alignment: Left (remove centering) */
-  [class*="timeline"],
-  [class*="slider"],
-  [class*="steps"],
-  [class*="deployment"] {
-    text-align: left !important;
-  }
-  
-  /* ========================================
-     CONNECTING LINES - Hide Horizontal
-     ======================================== */
-  [class*="timeline"] [class*="line"],
-  [class*="slider"] [class*="line"],
-  [class*="timeline"]::before,
-  [class*="timeline"]::after,
-  [class*="steps"]::before,
-  [class*="steps"]::after,
-  [class*="connector"],
-  hr,
-  [class*="border-t"]:not([class*="step"] *) {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-  }
-  
-  /* Optional: Subtle vertical line behind numbers */
-  [class*="timeline"],
-  [class*="slider"],
-  [class*="steps"] {
+    padding-bottom: 0 !important;
     position: relative !important;
   }
-  
-  [class*="timeline"]::before,
-  [class*="slider"]::before {
+
+  /* 2. Each step — CSS grid: column 1 = circle (44px), column 2 = title+desc */
+  #implementation .timeline-step {
+    display: grid !important;
+    grid-template-columns: 44px 1fr !important;
+    grid-template-rows: minmax(44px, auto) auto auto !important;
+    column-gap: 1rem !important;
+    row-gap: 2px !important;
+    align-items: center !important;
+    text-align: left !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: none !important;
+    position: relative !important;
+  }
+
+  /* 3. Connector line — subtle vertical thread between consecutive circles.
+        Drawn from the bottom of THIS step's circle, through the rest of the
+        step's height, plus the 2.5rem gap, to the top of the next circle. */
+  #implementation .timeline-step:not(:last-child)::after {
     content: "" !important;
     position: absolute !important;
-    left: calc(1.25rem + 20px) !important;
-    top: 20px !important;
-    bottom: 20px !important;
+    left: 21px !important;            /* center of 44px circle (line is 2px wide) */
+    top: 44px !important;             /* directly under circle */
     width: 2px !important;
-    background: linear-gradient(to bottom, rgba(163, 230, 53, 0.3), rgba(163, 230, 53, 0.1)) !important;
+    height: calc(100% - 44px + 2.5rem) !important;
+    background: linear-gradient(
+      to bottom,
+      rgba(163, 230, 53, 0.35),
+      rgba(163, 230, 53, 0.10)
+    ) !important;
     z-index: 0 !important;
+    pointer-events: none !important;
   }
-  
-  /* ========================================
-     2. STYLING THE 7 STEPS
-     ======================================== */
-  
-  /* Each Step Container */
-  [class*="timeline"] > *,
-  [class*="slider"] > *,
-  [class*="steps"] > * {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    text-align: left !important;
-    gap: 1rem !important;
-    margin-bottom: 30px !important;
-    padding: 0 !important;
-    width: 100% !important;
-    position: relative !important;
-    z-index: 1 !important;
-  }
-  
-  /* Last step - no margin */
-  [class*="timeline"] > *:last-child,
-  [class*="slider"] > *:last-child,
-  [class*="steps"] > *:last-child {
-    margin-bottom: 0 !important;
-  }
-  
-  /* ========================================
-     3. VISUAL POLISH FOR MOBILE
-     ======================================== */
-  
-  /* Circle (Number) - Fixed Width Left */
-  [class*="timeline"] .rounded-full,
-  [class*="slider"] .rounded-full,
-  [class*="steps"] .rounded-full,
-  [class*="timeline"] [class*="number"],
-  [class*="slider"] [class*="number"],
-  [class*="steps"] [class*="w-12"],
-  [class*="timeline"] [class*="w-12"],
-  [class*="slider"] [class*="w-12"] {
+
+  /* 4. The circle — fixed 44px, sits in row 1 of the grid, above the line */
+  #implementation .timeline-step > div:first-child {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
     width: 44px !important;
     height: 44px !important;
     min-width: 44px !important;
-    min-height: 44px !important;
-    max-width: 44px !important;
-    max-height: 44px !important;
-    flex-shrink: 0 !important;
-    flex-grow: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    margin: 0 !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* Number inside the circle — readable */
+  #implementation .timeline-step > div:first-child > span {
+    font-size: 1rem !important;
+    line-height: 1 !important;
+  }
+
+  /* 5. Title — bold, 15px, vertically centered against the 44px circle row */
+  #implementation .timeline-step > span:nth-of-type(1) {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    align-self: center !important;
+    text-align: left !important;
     font-size: 0.9375rem !important;
     font-weight: 700 !important;
-    border-radius: 50% !important;
-    margin: 0 !important;
-    z-index: 2 !important;
-    position: relative !important;
-  }
-  
-  /* Active/Current step (Green) */
-  [class*="timeline"] .bg-lime-400,
-  [class*="slider"] .bg-lime-400,
-  [class*="steps"] .bg-lime-400,
-  [class*="timeline"] [class*="active"],
-  [class*="slider"] [class*="active"] {
-    background: #a3e635 !important;
-    color: #000 !important;
-    border: none !important;
-    box-shadow: 0 0 20px rgba(163, 230, 53, 0.4) !important;
-  }
-  
-  /* Inactive steps */
-  [class*="timeline"] .border-white\/20,
-  [class*="slider"] .border-white\/20,
-  [class*="steps"] .border-white\/20,
-  [class*="timeline"] > *:not(:has(.bg-lime-400)) .rounded-full,
-  [class*="slider"] > *:not(:has(.bg-lime-400)) .rounded-full {
-    background: rgba(0, 0, 0, 0.5) !important;
-    border: 2px solid rgba(255, 255, 255, 0.15) !important;
-    color: #fff !important;
-  }
-  
-  /* Text Container - Right Side */
-  [class*="timeline"] > * > div:not(.rounded-full):not([class*="w-12"]),
-  [class*="slider"] > * > div:not(.rounded-full):not([class*="w-12"]),
-  [class*="steps"] > * > div:not(.rounded-full):not([class*="w-12"]) {
-    flex: 1 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    justify-content: center !important;
-    padding-left: 0.5rem !important;
-    min-height: 44px !important;
-  }
-  
-  /* Title - Bold */
-  [class*="timeline"] h3,
-  [class*="slider"] h3,
-  [class*="steps"] h3,
-  [class*="timeline"] [class*="font-semibold"],
-  [class*="slider"] [class*="font-semibold"],
-  [class*="steps"] [class*="font-semibold"],
-  [class*="timeline"] > * > div:last-child > *:first-child,
-  [class*="slider"] > * > div:last-child > *:first-child {
-    font-size: 1rem !important;
-    font-weight: 700 !important;
-    text-align: left !important;
-    margin: 0 0 2px 0 !important;
     line-height: 1.3 !important;
+    margin: 0 !important;
     color: #fff !important;
     letter-spacing: -0.01em !important;
   }
-  
-  /* Description - Smaller & Muted */
-  [class*="timeline"] p,
-  [class*="slider"] p,
-  [class*="steps"] p,
-  [class*="timeline"] [class*="text-sm"],
-  [class*="slider"] [class*="text-sm"],
-  [class*="steps"] [class*="text-sm"],
-  [class*="timeline"] > * > div:last-child > *:last-child,
-  [class*="slider"] > * > div:last-child > *:last-child {
-    font-size: 13px !important;
-    font-weight: 400 !important;
+
+  /* 6. Description — 13px, muted (~0.6 opacity), under the title */
+  #implementation .timeline-step > span:nth-of-type(2) {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
     text-align: left !important;
-    color: rgba(255, 255, 255, 0.45) !important;
-    margin: 0 !important;
+    font-size: 0.8125rem !important;
     line-height: 1.4 !important;
-  }
-  
-  /* ========================================
-     HEADLINE STYLING
-     ======================================== */
-  [class*="deployment"] h2,
-  [class*="strategic"] h2,
-  section:has([class*="7 days"]) h2,
-  section:has([class*="deployment"]) h2 {
-    font-size: 1.75rem !important;
-    font-weight: 700 !important;
-    text-align: left !important;
-    line-height: 1.2 !important;
-    margin-bottom: 2.5rem !important;
-    padding: 0 1.25rem !important;
-    letter-spacing: -0.02em !important;
-  }
-  
-  /* Subheadline */
-  [class*="deployment"] > p,
-  [class*="strategic"] > p {
-    font-size: 1rem !important;
-    text-align: left !important;
     color: rgba(255, 255, 255, 0.6) !important;
-    margin-bottom: 3rem !important;
-    padding: 0 1.25rem !important;
-    line-height: 1.6 !important;
+    margin: 0 !important;
+    padding-top: 2px !important;
+  }
+
+  /* 7. LIVE badge on the final step — sits below the desc, in column 2 */
+  #implementation .timeline-step:last-child > div:not(:first-child):not(.hidden) {
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+    margin: 0.5rem 0 0 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 8. Belt-and-braces: kill the desktop horizontal connector if anything
+        unhides it. The .hidden.lg:block class already does this but defend. */
+  #implementation .timeline-step > div.hidden {
+    display: none !important;
+  }
+
+  /* 9. Tighten the glass-card padding on small screens so the roadmap
+        breathes inside it without touching the edges. */
+  #implementation .glass-card {
+    padding: 1.25rem !important;
   }
 }
-
