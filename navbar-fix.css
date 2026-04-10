@@ -158,3 +158,165 @@
   }
 }
 
+
+/* ============================================
+   EMERGENCY FIX - VERTICAL ROADMAP LAYOUT
+   Enterprise Mobile (max-width: 768px)
+   ============================================ */
+
+@media (max-width: 768px) {
+  
+  /* 1. CONTAINER - Vertical Block Layout */
+  [class*="timeline"],
+  [class*="slider"],
+  [class*="deployment"] [class*="steps"],
+  section:has([class*="7"]) [class*="flex"],
+  section:has([class*="deployment"]) [class*="grid"] {
+    display: block !important;
+    flex-direction: unset !important;
+    overflow-x: visible !important;
+    width: 100% !important;
+    padding: 0 1rem !important;
+  }
+  
+  /* HIDE Horizontal connecting lines */
+  [class*="timeline"] [class*="line"],
+  [class*="slider"] [class*="line"],
+  [class*="timeline"]::before,
+  [class*="timeline"]::after,
+  [class*="slider"]::before,
+  [class*="slider"]::after {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  
+  /* 2. EACH STEP - Flex Layout with Number Left, Text Right */
+  [class*="timeline"] > *,
+  [class*="slider"] > *,
+  [class*="steps"] > *,
+  [class*="deployment"] [class*="flex"] > * {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 1rem !important;
+    margin-bottom: 24px !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  
+  /* 3. LEFT SIDE - Fixed Width Circle */
+  [class*="timeline"] .rounded-full,
+  [class*="slider"] .rounded-full,
+  [class*="steps"] .rounded-full,
+  [class*="timeline"] [class*="circle"],
+  [class*="slider"] [class*="circle"],
+  [class*="steps"] [class*="number"],
+  [class*="timeline"] [class*="w-12"],
+  [class*="slider"] [class*="w-12"],
+  [class*="steps"] [class*="w-12"] {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    border-radius: 50% !important;
+    margin: 0 !important;
+  }
+  
+  /* Active step (green) */
+  [class*="timeline"] .bg-lime-400,
+  [class*="slider"] .bg-lime-400,
+  [class*="steps"] .bg-lime-400,
+  [class*="timeline"] [class*="active"],
+  [class*="slider"] [class*="active"] {
+    background: #a3e635 !important;
+    color: #000 !important;
+    border: none !important;
+  }
+  
+  /* Inactive steps */
+  [class*="timeline"] .border-white\/20,
+  [class*="slider"] .border-white\/20,
+  [class*="steps"] .border-white\/20 {
+    background: transparent !important;
+    border: 2px solid rgba(255,255,255,0.2) !important;
+    color: #fff !important;
+  }
+  
+  /* 4. RIGHT SIDE - Text Container */
+  [class*="timeline"] > * > div:not(.rounded-full):not([class*="circle"]),
+  [class*="slider"] > * > div:not(.rounded-full):not([class*="circle"]),
+  [class*="steps"] > * > div:not(.rounded-full):not([class*="circle"]) {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    min-height: 40px !important;
+  }
+  
+  /* 5. TYPOGRAPHY - Left Aligned with Hierarchy */
+  
+  /* Title - Bold and Clear */
+  [class*="timeline"] h3,
+  [class*="slider"] h3,
+  [class*="steps"] h3,
+  [class*="timeline"] [class*="title"],
+  [class*="slider"] [class*="title"],
+  [class*="steps"] [class*="font-semibold"],
+  [class*="timeline"] > * > div:last-child > *:first-child,
+  [class*="slider"] > * > div:last-child > *:first-child {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+    margin: 0 0 4px 0 !important;
+    line-height: 1.3 !important;
+    color: #fff !important;
+  }
+  
+  /* Subtext - Smaller and Grey */
+  [class*="timeline"] p,
+  [class*="slider"] p,
+  [class*="steps"] p,
+  [class*="timeline"] [class*="text-gray"],
+  [class*="slider"] [class*="text-gray"],
+  [class*="steps"] [class*="text-sm"],
+  [class*="timeline"] > * > div:last-child > *:last-child,
+  [class*="slider"] > * > div:last-child > *:last-child {
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    text-align: left !important;
+    color: rgba(255,255,255,0.5) !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Last step - remove bottom margin */
+  [class*="timeline"] > *:last-child,
+  [class*="slider"] > *:last-child,
+  [class*="steps"] > *:last-child {
+    margin-bottom: 0 !important;
+  }
+  
+  /* Headline styling */
+  [class*="deployment"] h2,
+  [class*="strategic"] h2,
+  section:has([class*="7"]) h2 {
+    font-size: 1.5rem !important;
+    text-align: left !important;
+    margin-bottom: 2rem !important;
+    padding: 0 1rem !important;
+  }
+}
+
