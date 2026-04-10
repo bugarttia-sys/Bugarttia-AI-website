@@ -447,16 +447,14 @@
   }
 
   /* 6. Hero "How It Works" card — surfaced via `.min-h-[400px]` rule
-        above. Drop alpha to 0.30 with strong blur so it reads as
-        "almost transparent frosted glass" — the city image shows
-        clearly through it while the backdrop-filter blur smooths the
-        background enough to keep the text crisp. */
+        above. Standard frost values (matching the previously approved
+        version): blur 18px + saturate 140%, 0.55 alpha. */
   .min-h-\[400px\] {
-    background: rgba(10, 12, 18, 0.30) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(150%) !important;
-    backdrop-filter: blur(28px) saturate(150%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.10) !important;
-    border-radius: 1.5rem !important;
+    background: rgba(15, 17, 22, 0.55) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+    backdrop-filter: blur(18px) saturate(140%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 1.25rem !important;
     padding: 1.75rem 1.5rem !important;
     margin-top: 2.5rem !important;
   }
