@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bugarttia-neon: #a3e635;
+  --color-bugarttia-charcoal: #0a0a0a;
+  --color-bugarttia-dark: #111111;
+  --color-bugarttia-gray: #9ca3af;
+  --color-bugarttia-white: #ffffff;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: var(--color-bugarttia-charcoal);
+    color: white;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(to right, var(--color-bugarttia-neon), #4ade80);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
