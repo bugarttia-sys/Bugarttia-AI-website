@@ -30,3 +30,131 @@
     order: 999 !important;
   }
 }
+
+/* ============================================
+   7-DAY DEPLOYMENT SLIDER - MOBILE RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  
+  /* 1. Headline & Subheadline Centered */
+  [class*="deployment"],
+  [class*="strategic"],
+  section:has([class*="7 days"]),
+  section:has([class*="deployment"]) {
+    text-align: center !important;
+  }
+  
+  [class*="deployment"] h2,
+  [class*="strategic"] h2,
+  [class*="deployment"] [class*="title"],
+  [class*="strategic"] [class*="title"] {
+    text-align: center !important;
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  [class*="deployment"] p,
+  [class*="strategic"] p {
+    text-align: center !important;
+    font-size: 0.9rem !important;
+    max-width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* 2. The 7 Steps Timeline - Vertical Layout */
+  [class*="timeline"],
+  [class*="slider"],
+  [class*="steps"]:has([class*="1"], [class*="2"], [class*="3"], [class*="4"], [class*="5"], [class*="6"], [class*="7"]) {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    padding: 1rem !important;
+  }
+  
+  /* Each step item */
+  [class*="timeline"] > *,
+  [class*="slider"] > *,
+  [class*="steps"] > * {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* 3. Centered Circles (Numbers) */
+  [class*="timeline"] .rounded-full,
+  [class*="slider"] .rounded-full,
+  [class*="steps"] .rounded-full,
+  [class*="timeline"] [class*="circle"],
+  [class*="slider"] [class*="circle"],
+  [class*="steps"] [class*="w-12"],
+  [class*="steps"] [class*="number"] {
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    border-radius: 50% !important;
+    margin: 0 auto !important;
+    flex-shrink: 0 !important;
+  }
+  
+  /* Active/Current step (green) */
+  [class*="timeline"] .rounded-full[class*="active"],
+  [class*="steps"] .bg-lime-400,
+  [class*="steps"] .text-black {
+    background: #a3e635 !important;
+    color: #000 !important;
+  }
+  
+  /* Inactive steps */
+  [class*="timeline"] .rounded-full:not([class*="active"]),
+  [class*="steps"] .border-white\/20 {
+    background: transparent !important;
+    border: 2px solid rgba(255,255,255,0.2) !important;
+    color: #fff !important;
+  }
+  
+  /* 4. Centered Text Below Circles */
+  [class*="timeline"] h3,
+  [class*="slider"] h3,
+  [class*="steps"] h3 {
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    margin-top: 0.5rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  [class*="timeline"] p,
+  [class*="slider"] p,
+  [class*="steps"] p {
+    font-size: 0.75rem !important;
+    color: rgba(255,255,255,0.6) !important;
+    text-align: center !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* 5. Adequate gap between stacked items */
+  [class*="timeline"] > * + *,
+  [class*="slider"] > * + *,
+  [class*="steps"] > * + * {
+    margin-top: 1rem !important;
+    padding-top: 1rem !important;
+    border-top: 1px solid rgba(255,255,255,0.1) !important;
+  }
+  
+  /* Remove horizontal scroll behavior */
+  [class*="overflow-x"],
+  [class*="scroll"] {
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+  }
+}
+
