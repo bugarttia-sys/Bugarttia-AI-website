@@ -320,3 +320,240 @@
   }
 }
 
+
+/* ============================================
+   MOBILE RESPONSIVENESS REFACTOR
+   Vertical Roadmap (max-width: 768px)
+   ============================================ */
+
+@media (max-width: 768px) {
+  
+  /* ========================================
+     1. STRUCTURAL REFACTOR
+     ======================================== */
+  
+  /* Container: Vertical Layout */
+  [class*="timeline"],
+  [class*="slider"],
+  [class*="deployment"] [class*="steps"],
+  section:has([class*="7"]) [class*="flex"],
+  section:has([class*="deployment"]) > div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    padding: 0 1.25rem !important;
+    gap: 0 !important;
+  }
+  
+  /* Remove horizontal scroll */
+  [class*="overflow-x-auto"],
+  [class*="overflow-x-scroll"],
+  [class*="overflow-x"] {
+    overflow-x: visible !important;
+    overflow: visible !important;
+  }
+  
+  /* Alignment: Left (remove centering) */
+  [class*="timeline"],
+  [class*="slider"],
+  [class*="steps"],
+  [class*="deployment"] {
+    text-align: left !important;
+  }
+  
+  /* ========================================
+     CONNECTING LINES - Hide Horizontal
+     ======================================== */
+  [class*="timeline"] [class*="line"],
+  [class*="slider"] [class*="line"],
+  [class*="timeline"]::before,
+  [class*="timeline"]::after,
+  [class*="steps"]::before,
+  [class*="steps"]::after,
+  [class*="connector"],
+  hr,
+  [class*="border-t"]:not([class*="step"] *) {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  
+  /* Optional: Subtle vertical line behind numbers */
+  [class*="timeline"],
+  [class*="slider"],
+  [class*="steps"] {
+    position: relative !important;
+  }
+  
+  [class*="timeline"]::before,
+  [class*="slider"]::before {
+    content: "" !important;
+    position: absolute !important;
+    left: calc(1.25rem + 20px) !important;
+    top: 20px !important;
+    bottom: 20px !important;
+    width: 2px !important;
+    background: linear-gradient(to bottom, rgba(163, 230, 53, 0.3), rgba(163, 230, 53, 0.1)) !important;
+    z-index: 0 !important;
+  }
+  
+  /* ========================================
+     2. STYLING THE 7 STEPS
+     ======================================== */
+  
+  /* Each Step Container */
+  [class*="timeline"] > *,
+  [class*="slider"] > *,
+  [class*="steps"] > * {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 1rem !important;
+    margin-bottom: 30px !important;
+    padding: 0 !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  
+  /* Last step - no margin */
+  [class*="timeline"] > *:last-child,
+  [class*="slider"] > *:last-child,
+  [class*="steps"] > *:last-child {
+    margin-bottom: 0 !important;
+  }
+  
+  /* ========================================
+     3. VISUAL POLISH FOR MOBILE
+     ======================================== */
+  
+  /* Circle (Number) - Fixed Width Left */
+  [class*="timeline"] .rounded-full,
+  [class*="slider"] .rounded-full,
+  [class*="steps"] .rounded-full,
+  [class*="timeline"] [class*="number"],
+  [class*="slider"] [class*="number"],
+  [class*="steps"] [class*="w-12"],
+  [class*="timeline"] [class*="w-12"],
+  [class*="slider"] [class*="w-12"] {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    max-width: 44px !important;
+    max-height: 44px !important;
+    flex-shrink: 0 !important;
+    flex-grow: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.9375rem !important;
+    font-weight: 700 !important;
+    border-radius: 50% !important;
+    margin: 0 !important;
+    z-index: 2 !important;
+    position: relative !important;
+  }
+  
+  /* Active/Current step (Green) */
+  [class*="timeline"] .bg-lime-400,
+  [class*="slider"] .bg-lime-400,
+  [class*="steps"] .bg-lime-400,
+  [class*="timeline"] [class*="active"],
+  [class*="slider"] [class*="active"] {
+    background: #a3e635 !important;
+    color: #000 !important;
+    border: none !important;
+    box-shadow: 0 0 20px rgba(163, 230, 53, 0.4) !important;
+  }
+  
+  /* Inactive steps */
+  [class*="timeline"] .border-white\/20,
+  [class*="slider"] .border-white\/20,
+  [class*="steps"] .border-white\/20,
+  [class*="timeline"] > *:not(:has(.bg-lime-400)) .rounded-full,
+  [class*="slider"] > *:not(:has(.bg-lime-400)) .rounded-full {
+    background: rgba(0, 0, 0, 0.5) !important;
+    border: 2px solid rgba(255, 255, 255, 0.15) !important;
+    color: #fff !important;
+  }
+  
+  /* Text Container - Right Side */
+  [class*="timeline"] > * > div:not(.rounded-full):not([class*="w-12"]),
+  [class*="slider"] > * > div:not(.rounded-full):not([class*="w-12"]),
+  [class*="steps"] > * > div:not(.rounded-full):not([class*="w-12"]) {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    padding-left: 0.5rem !important;
+    min-height: 44px !important;
+  }
+  
+  /* Title - Bold */
+  [class*="timeline"] h3,
+  [class*="slider"] h3,
+  [class*="steps"] h3,
+  [class*="timeline"] [class*="font-semibold"],
+  [class*="slider"] [class*="font-semibold"],
+  [class*="steps"] [class*="font-semibold"],
+  [class*="timeline"] > * > div:last-child > *:first-child,
+  [class*="slider"] > * > div:last-child > *:first-child {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+    margin: 0 0 2px 0 !important;
+    line-height: 1.3 !important;
+    color: #fff !important;
+    letter-spacing: -0.01em !important;
+  }
+  
+  /* Description - Smaller & Muted */
+  [class*="timeline"] p,
+  [class*="slider"] p,
+  [class*="steps"] p,
+  [class*="timeline"] [class*="text-sm"],
+  [class*="slider"] [class*="text-sm"],
+  [class*="steps"] [class*="text-sm"],
+  [class*="timeline"] > * > div:last-child > *:last-child,
+  [class*="slider"] > * > div:last-child > *:last-child {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    text-align: left !important;
+    color: rgba(255, 255, 255, 0.45) !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* ========================================
+     HEADLINE STYLING
+     ======================================== */
+  [class*="deployment"] h2,
+  [class*="strategic"] h2,
+  section:has([class*="7 days"]) h2,
+  section:has([class*="deployment"]) h2 {
+    font-size: 1.75rem !important;
+    font-weight: 700 !important;
+    text-align: left !important;
+    line-height: 1.2 !important;
+    margin-bottom: 2.5rem !important;
+    padding: 0 1.25rem !important;
+    letter-spacing: -0.02em !important;
+  }
+  
+  /* Subheadline */
+  [class*="deployment"] > p,
+  [class*="strategic"] > p {
+    font-size: 1rem !important;
+    text-align: left !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    margin-bottom: 3rem !important;
+    padding: 0 1.25rem !important;
+    line-height: 1.6 !important;
+  }
+}
+
