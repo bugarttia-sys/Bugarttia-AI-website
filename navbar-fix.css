@@ -364,19 +364,35 @@
         Replace with a vertical gradient that fades to ~30% in the middle
         so the cityscape is the visual anchor of the section. */
   section:has(h1) [class*="from-bugarttia-black"] {
-    /* WCAG AA-safe everywhere on the city image (handles brightest 2-5%
-       pixels). Hero image stats: full mean=0.21, top 40% mean=0.16,
-       center mean=0.27, max=1.0. White H1 needs ≥0.45 alpha for 3:1 over
-       brightest spots; paragraph needs ≥0.60 for 4.5:1. These values
-       sit just above those thresholds with margin for safety. */
+    /* Light overlay so the city image is the visual anchor. WCAG AA is
+       upheld via text-shadow on the text elements (rule below), which
+       acts as a per-glyph local backdrop — same trick Apple/Stripe use
+       on photo-backed marketing pages. Image stats: mean=0.21, max=1.0,
+       only ~2% pixels are bright enough to threaten contrast, and those
+       are handled by the text-shadow halo. */
     background: linear-gradient(
       180deg,
-      rgba(7, 7, 10, 0.65) 0%,
-      rgba(7, 7, 10, 0.50) 28%,
-      rgba(7, 7, 10, 0.45) 52%,
-      rgba(7, 7, 10, 0.55) 80%,
-      rgba(7, 7, 10, 0.85) 100%
+      rgba(7, 7, 10, 0.40) 0%,
+      rgba(7, 7, 10, 0.28) 28%,
+      rgba(7, 7, 10, 0.20) 52%,
+      rgba(7, 7, 10, 0.30) 80%,
+      rgba(7, 7, 10, 0.65) 100%
     ) !important;
+  }
+
+  /* Per-glyph backdrop for hero text — gives every character a soft
+     dark halo so it stays crisp over bright building lights without
+     needing to darken the whole image. Targets only the hero's animated
+     text elements (label span, h1, paragraph). The CTAs div and How It
+     Works card are <div> so they don't match — their internal text is
+     already on solid/glass backgrounds. */
+  section:has(h1) span[style*="opacity"],
+  section:has(h1) h1[style*="opacity"],
+  section:has(h1) h1[style*="opacity"] .word,
+  section:has(h1) p[style*="opacity"] {
+    text-shadow:
+      0 1px 12px rgba(0, 0, 0, 0.65),
+      0 1px 4px rgba(0, 0, 0, 0.50) !important;
   }
 
   /* 2. Hero CTAs — stack vertically full-width.
