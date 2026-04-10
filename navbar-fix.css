@@ -425,27 +425,50 @@
     border-color: rgba(255, 255, 255, 0.18) !important;
   }
 
-  /* 5. Hero "How It Works" card — already surfaced via `.min-h-[400px]`
-        rule above. Bump the visuals to match the mockup: more transparent
-        background, stronger blur + saturation, more padding, rounded. */
+  /* 5. CRITICAL LAYOUT FIX — stack hero content vertically on mobile.
+        The hero's content layer is `flex items-center py-20 lg:py-0`
+        (default flex-direction: row). On desktop the How It Works card
+        is `lg:absolute` so it's removed from the flow and the inner
+        text wrapper takes the full row. On mobile, after we unhide the
+        card and set position: static (rule below), it became a flex
+        ROW sibling next to the text wrapper — both sharing the
+        horizontal space ~50/50, which made the H1 wrap to 4 lines and
+        the card sit beside the text instead of below it.
+
+        Force column direction so children stack vertically. The only
+        `relative.z-10` direct child of the hero section is this content
+        layer (the bg div uses `absolute`, no `relative`). */
+  section:has(h1) > div.relative.z-10 {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    padding-top: 5rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* 6. Hero "How It Works" card — surfaced via `.min-h-[400px]` rule
+        above. Drop alpha to 0.30 with strong blur so it reads as
+        "almost transparent frosted glass" — the city image shows
+        clearly through it while the backdrop-filter blur smooths the
+        background enough to keep the text crisp. */
   .min-h-\[400px\] {
-    background: rgba(15, 17, 22, 0.55) !important;
-    -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
-    backdrop-filter: blur(18px) saturate(140%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    border-radius: 1.25rem !important;
+    background: rgba(10, 12, 18, 0.30) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(150%) !important;
+    backdrop-filter: blur(28px) saturate(150%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+    border-radius: 1.5rem !important;
     padding: 1.75rem 1.5rem !important;
     margin-top: 2.5rem !important;
   }
 
-  /* 6. Apply the same premium frost values to ALL .glass-card elements
-        on the homepage so the slider card (#implementation) and the
-        system-flow card use the exact same look as the hero "How It
-        Works" card. The base bundled CSS has blur(12px) and a slightly
-        cooler dark; bump to blur(18px) saturate(140%) and rgba(15,17,22,
-        0.55) for visual consistency. Mobile only — desktop is unchanged
-        per the user's "perfect" sign-off. */
-  .glass-card {
+  /* 7. The other .glass-card elements (#implementation slider,
+        #system-flow) sit ON TOP of busy city backgrounds where step text
+        needs solid contrast — they keep a heavier 0.55 alpha. The hero
+        banner is the only one that's "almost transparent" because its
+        content (3 bullets + headline) is short and the surrounding hero
+        already has the city image as the visual anchor. */
+  #implementation .glass-card,
+  #system-flow .glass-card {
     background: rgba(15, 17, 22, 0.55) !important;
     -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
     backdrop-filter: blur(18px) saturate(140%) !important;
