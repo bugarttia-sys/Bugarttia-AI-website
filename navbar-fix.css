@@ -363,77 +363,44 @@
         Original is a horizontal gradient that's near-opaque on the left.
         Replace with a vertical gradient that fades to ~30% in the middle
         so the cityscape is the visual anchor of the section. */
+  /* 1. Replace the horizontal `from-bugarttia-black/90 via-/60 to-transparent`
+        gradient (which only makes sense for desktop's left-text/right-card
+        layout) with a vertical gradient that mirrors desktop's overall
+        ~50% darkening: heavier in the upper area where text sits, lighter
+        in the lower area where the glass card sits. Average matches
+        desktop's `lg:gradient-overlay` which is 0.85→0.5→0 horizontally. */
   section:has(h1) [class*="from-bugarttia-black"] {
-    /* Light overlay so the city image is the visual anchor. WCAG AA is
-       upheld via text-shadow on the text elements (rule below), which
-       acts as a per-glyph local backdrop — same trick Apple/Stripe use
-       on photo-backed marketing pages. Image stats: mean=0.21, max=1.0,
-       only ~2% pixels are bright enough to threaten contrast, and those
-       are handled by the text-shadow halo. */
     background: linear-gradient(
       180deg,
-      rgba(7, 7, 10, 0.40) 0%,
-      rgba(7, 7, 10, 0.28) 28%,
-      rgba(7, 7, 10, 0.20) 52%,
-      rgba(7, 7, 10, 0.30) 80%,
-      rgba(7, 7, 10, 0.65) 100%
+      rgba(7, 7, 10, 0.65) 0%,
+      rgba(7, 7, 10, 0.55) 25%,
+      rgba(7, 7, 10, 0.45) 55%,
+      rgba(7, 7, 10, 0.40) 80%,
+      rgba(7, 7, 10, 0.55) 100%
     ) !important;
   }
 
-  /* Per-glyph backdrop for hero text — gives every character a soft
-     dark halo so it stays crisp over bright building lights without
-     needing to darken the whole image. Targets only the hero's animated
-     text elements (label span, h1, paragraph). The CTAs div and How It
-     Works card are <div> so they don't match — their internal text is
-     already on solid/glass backgrounds. */
+  /* 2. Subtle text-shadow halo on hero text — the vertical gradient
+        averages ~0.50 which is below the alpha needed to keep small
+        body text readable over the brightest 2% of city pixels.
+        Soft enough to be visually invisible at normal viewing distance,
+        WCAG-safe enough to handle the worst-case spots. */
   section:has(h1) span[style*="opacity"],
   section:has(h1) h1[style*="opacity"],
   section:has(h1) h1[style*="opacity"] .word,
   section:has(h1) p[style*="opacity"] {
-    text-shadow:
-      0 1px 12px rgba(0, 0, 0, 0.65),
-      0 1px 4px rgba(0, 0, 0, 0.50) !important;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.55) !important;
   }
 
-  /* 2. Hero CTAs — stack vertically full-width.
-        The CTAs <div> is `flex flex-wrap gap-3 sm:gap-4` with inline
-        style="opacity:0" (GSAP from-state). Inside hero only. */
-  section:has(h1) .flex.flex-wrap[style*="opacity"] {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    width: 100% !important;
-    gap: 0.75rem !important;
-    margin-top: 0.75rem !important;
-  }
-
-  /* 3. Hero CTA buttons — pill-shape, full width, more padding */
-  section:has(h1) .flex.flex-wrap[style*="opacity"] > button {
-    width: 100% !important;
-    justify-content: center !important;
-    padding: 1.05rem 1.5rem !important;
-    font-size: 0.9375rem !important;
-    border-radius: 9999px !important;
-  }
-
-  /* 4. The "See the System" button (the only `border border-white/20`
-        button on the page) gets a glassy filled background to match
-        the mockup's filled-pill look. */
-  button.border.border-white\/20 {
-    background: rgba(15, 17, 22, 0.55) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    backdrop-filter: blur(8px) !important;
-    border-color: rgba(255, 255, 255, 0.18) !important;
-  }
-
-  /* 5. CRITICAL LAYOUT FIX — stack hero content vertically on mobile.
+  /* 3. CRITICAL LAYOUT FIX — stack hero content vertically on mobile.
         The hero's content layer is `flex items-center py-20 lg:py-0`
         (default flex-direction: row). On desktop the How It Works card
         is `lg:absolute` so it's removed from the flow and the inner
         text wrapper takes the full row. On mobile, after we unhide the
-        card and set position: static (rule below), it became a flex
-        ROW sibling next to the text wrapper — both sharing the
-        horizontal space ~50/50, which made the H1 wrap to 4 lines and
-        the card sit beside the text instead of below it.
+        card and set position: static, it became a flex ROW sibling
+        next to the text wrapper — both sharing the horizontal space
+        ~50/50, which made the H1 wrap to 4 lines and the card sit
+        beside the text instead of below it.
 
         Force column direction so children stack vertically. The only
         `relative.z-10` direct child of the hero section is this content
@@ -446,31 +413,26 @@
     padding-bottom: 3rem !important;
   }
 
-  /* 6. Hero "How It Works" card — surfaced via `.min-h-[400px]` rule
-        above. Standard frost values (matching the previously approved
-        version): blur 18px + saturate 140%, 0.55 alpha. */
-  .min-h-\[400px\] {
-    background: rgba(15, 17, 22, 0.55) !important;
-    -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
-    backdrop-filter: blur(18px) saturate(140%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    border-radius: 1.25rem !important;
-    padding: 1.75rem 1.5rem !important;
-    margin-top: 2.5rem !important;
+  /* 4. Hero CTAs — stack vertically full-width on mobile.
+        Keep desktop's rounded-xl + transparent outline / lime fill
+        styling intact; only override layout (column + full-width). */
+  section:has(h1) .flex.flex-wrap[style*="opacity"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+    margin-top: 0.75rem !important;
   }
 
-  /* 7. The other .glass-card elements (#implementation slider,
-        #system-flow) sit ON TOP of busy city backgrounds where step text
-        needs solid contrast — they keep a heavier 0.55 alpha. The hero
-        banner is the only one that's "almost transparent" because its
-        content (3 bullets + headline) is short and the surrounding hero
-        already has the city image as the visual anchor. */
-  #implementation .glass-card,
-  #system-flow .glass-card {
-    background: rgba(15, 17, 22, 0.55) !important;
-    -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
-    backdrop-filter: blur(18px) saturate(140%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    border-radius: 1.25rem !important;
+  section:has(h1) .flex.flex-wrap[style*="opacity"] > button {
+    width: 100% !important;
+    justify-content: center !important;
   }
+
+  /* 5. Hero "How It Works" card visual styling is intentionally NOT
+        overridden here — let the bundled `.glass-card` class supply
+        background, blur, border so the card looks identical to the
+        desktop version. The structural overrides (display/position/
+        width/padding) are in the earlier "Mobile Visibility & Layout
+        Fix" block, line ~204. */
 }
