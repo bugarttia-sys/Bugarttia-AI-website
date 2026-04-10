@@ -337,3 +337,83 @@
     padding: 1.25rem !important;
   }
 }
+
+/* ============================================
+   HERO POLISH — Mockup-matching mobile design
+   (max-width: 1023px)
+
+   Goals from the supplied mockup:
+   1. Background cityscape clearly visible behind text (current gradient
+      `from-bugarttia-black/90 via-bugarttia-black/60 to-transparent`
+      suffocates the left 2/3 of the image on mobile).
+   2. CTAs stacked vertically full-width, pill-shaped.
+   3. "See the System" button gets a glassy filled look instead of
+      a thin outline.
+   4. The "How It Works" card sits below the CTAs as a premium frosted
+      block with stronger blur + saturation.
+
+   Hero anchor selector: `section:has(h1)` — only HeroSection has an
+   <h1> on the homepage (PrivacyPolicy.tsx also has an h1 but it's a
+   different route).
+   ============================================ */
+
+@media (max-width: 1023px) {
+
+  /* 1. Lighter background overlay so the city image shows through.
+        Original is a horizontal gradient that's near-opaque on the left.
+        Replace with a vertical gradient that fades to ~30% in the middle
+        so the cityscape is the visual anchor of the section. */
+  section:has(h1) [class*="from-bugarttia-black"] {
+    background: linear-gradient(
+      180deg,
+      rgba(7, 7, 10, 0.78) 0%,
+      rgba(7, 7, 10, 0.45) 28%,
+      rgba(7, 7, 10, 0.30) 52%,
+      rgba(7, 7, 10, 0.55) 80%,
+      rgba(7, 7, 10, 0.88) 100%
+    ) !important;
+  }
+
+  /* 2. Hero CTAs — stack vertically full-width.
+        The CTAs <div> is `flex flex-wrap gap-3 sm:gap-4` with inline
+        style="opacity:0" (GSAP from-state). Inside hero only. */
+  section:has(h1) .flex.flex-wrap[style*="opacity"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+    margin-top: 0.75rem !important;
+  }
+
+  /* 3. Hero CTA buttons — pill-shape, full width, more padding */
+  section:has(h1) .flex.flex-wrap[style*="opacity"] > button {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 1.05rem 1.5rem !important;
+    font-size: 0.9375rem !important;
+    border-radius: 9999px !important;
+  }
+
+  /* 4. The "See the System" button (the only `border border-white/20`
+        button on the page) gets a glassy filled background to match
+        the mockup's filled-pill look. */
+  button.border.border-white\/20 {
+    background: rgba(15, 17, 22, 0.55) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(8px) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+  }
+
+  /* 5. Hero "How It Works" card — already surfaced via `.min-h-[400px]`
+        rule above. Bump the visuals to match the mockup: more transparent
+        background, stronger blur + saturation, more padding, rounded. */
+  .min-h-\[400px\] {
+    background: rgba(15, 17, 22, 0.55) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+    backdrop-filter: blur(18px) saturate(140%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 1.25rem !important;
+    padding: 1.75rem 1.5rem !important;
+    margin-top: 2.5rem !important;
+  }
+}
