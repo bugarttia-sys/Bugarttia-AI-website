@@ -1,0 +1,32 @@
+/* NAVBAR ONLY - Logo left, Menu right */
+@media (max-width: 1024px) {
+  nav, header, [class*="nav"], [class*="header"] {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 1rem !important;
+  }
+  
+  nav > *, header > *, [class*="nav"] > *, [class*="header"] > * {
+    flex-shrink: 0 !important;
+  }
+  
+  /* First element (logo) - LEFT */
+  nav > *:first-child, 
+  header > *:first-child,
+  nav > a:first-of-type,
+  header > a:first-of-type {
+    margin-right: auto !important;
+    order: 0 !important;
+  }
+  
+  /* Last element (menu button) - RIGHT */
+  nav > *:last-child, 
+  header > *:last-child,
+  nav > button:last-of-type,
+  header > button:last-of-type {
+    margin-left: auto !important;
+    order: 999 !important;
+  }
+}
