@@ -163,3 +163,56 @@
     padding: 1.25rem !important;
   }
 }
+
+/* ============================================
+   HERO SECTION — Mobile Visibility & Layout Fix
+   (max-width: 1023px)
+
+   Source bug in src/sections/HeroSection.tsx:
+   - The first useEffect (entrance animation) animates only the `.word`
+     <span> children of the H1 — it never animates the parent H1's opacity.
+   - React renders the H1 with inline style="opacity:0" (the GSAP from-state).
+   - On desktop the second useLayoutEffect's scroll-pin timeline applies
+     opacity:1 to the H1 as a side-effect of its from-vars {x:0, opacity:1}.
+   - On mobile that hook bails out (`window.innerWidth < 1024`) so the H1
+     stays at inline opacity:0 — invisible. The label, paragraph, CTAs and
+     background div all DO get directly animated to opacity:1, so they show
+     fine; only the H1 is broken.
+
+   Plus: surface the "How It Works" side card on mobile (currently
+   `hidden lg:block`) as a stacked block below the CTAs.
+   ============================================ */
+
+@media (max-width: 1023px) {
+
+  /* 1. Force the hero H1 visible. */
+  section h1[style*="opacity"] {
+    opacity: 1 !important;
+  }
+  /* The .word spans get animated by GSAP from {y:40, opacity:0} → {y:0, opacity:1}
+     stagger over 0.7s. If for any reason that animation hasn't completed when
+     paint happens, defend against it. */
+  section h1[style*="opacity"] .word {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* 2. Surface the "How It Works" card on mobile.
+        Identified by `min-h-[400px]` which is unique to this card (verified
+        against the entire bundle). Switch from desktop absolute side-card to
+        mobile static stacked block below the CTAs. */
+  .min-h-\[400px\] {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    max-height: none !important;
+    margin: 2rem 0 0 0 !important;
+    padding: 1.5rem !important;
+    /* Override inline opacity:0; GSAP animates this card to 1 in the first
+       useEffect but `display:none` from the `hidden` Tailwind class can
+       block paint of the animation, leaving the inline value visible. */
+    opacity: 1 !important;
+  }
+}
