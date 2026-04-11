@@ -174,7 +174,7 @@ const agents = [
   {
     iconKey: 'Personalization',
     title: 'Personalization',
-    desc: 'Dynamic message personalization tailored to each prospect\'s context and preferences.',
+    desc: "Dynamic message personalization tailored to each prospect's context and preferences.",
     bullets: ['Context-aware messaging', 'Behavioral triggers', 'Multi-channel adaptation']
   },
   {
@@ -257,7 +257,7 @@ export default function SystemPage() {
                 return (
                   <div 
                     key={agent.title} 
-                    className="agent-card relative glass-card p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-bugarttia-neon/30 hover:shadow-[0_0_40px_rgba(182,255,46,0.15)] hover:scale-[1.02] transition-all duration-300 group"
+                    className="agent-card relative glass-card p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-bugarttia-neon/30 hover:shadow-[0_0_40px_rgba(163,230,53,0.15)] hover:scale-[1.02] transition-all duration-300 group"
                   >
                     {/* SVG Icon */}
                     <div className="mb-4 transition-transform duration-300 group-hover:scale-110">
