@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// All 9 agents - Original 6 + 3 new ones
+// Featured agents for homepage (6 cards)
 const agents = [
-  // Original 6 cards
   {
     icon: '🔍',
     title: 'Signal Detection',
@@ -43,25 +43,6 @@ const agents = [
     desc: 'Seamless integration with your existing CRM and sales stack.',
     bullets: ['CRM synchronization', 'API access', 'Webhook support']
   },
-  // NEW CARDS - 3 new agents
-  {
-    icon: '🎯',
-    title: 'Amplemarket',
-    desc: 'The premier source for initial data and elite market signals.',
-    bullets: ['Premium data sources', 'Deep luxury research', 'Elite lead intelligence']
-  },
-  {
-    icon: '🧠',
-    title: 'OpenClaw AI',
-    desc: 'Autonomous workflow management, handling everything from data enrichment to exclusive appointment booking.',
-    bullets: ['Custom reasoning logic', 'Privacy-first execution', 'Complete workflow control']
-  },
-  {
-    icon: '🎤',
-    title: 'Pete & Gabi',
-    desc: 'Specialized human-like voice AI for high-touch telephonic service and exclusive closing.',
-    bullets: ['Human-like voice interaction', 'Immediate 24/7 service', 'High-end closing capabilities']
-  }
 ];
 
 export default function AgentSystemSection() {
@@ -98,16 +79,16 @@ export default function AgentSystemSection() {
           <span className="text-bugarttia-neon text-sm font-semibold tracking-widest uppercase">The System</span>
           <h2 className="text-3xl md:text-4xl font-bold mt-4">Intelligent Agent Ecosystem</h2>
           <p className="mt-4 text-bugarttia-gray max-w-2xl mx-auto">
-            Nine autonomous agents working in perfect harmony to transform your lead generation.
+            Six autonomous agents working in perfect harmony to transform your lead generation.
           </p>
         </div>
         
-        {/* 9-Card Grid - 3x3 on desktop */}
+        {/* 6-Card Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {agents.map((agent) => (
             <div 
               key={agent.title} 
-              className="agent-card glass-card p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-bugarttia-neon/30 hover:shadow-[0_0_40px_rgba(182,255,46,0.15)] transition-all duration-300 group"
+              className="agent-card relative glass-card p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-bugarttia-neon/30 hover:shadow-[0_0_40px_rgba(182,255,46,0.15)] transition-all duration-300 group"
             >
               {/* Icon */}
               <div className="text-4xl mb-4 transition-transform duration-300 group-hover:scale-110">
@@ -137,6 +118,19 @@ export default function AgentSystemSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* View All Button */}
+        <div className="mt-12 text-center">
+          <Link 
+            to="/system"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-bugarttia-neon/50 text-bugarttia-neon font-semibold rounded-lg hover:bg-bugarttia-neon/10 transition-all duration-300"
+          >
+            <span>View All 9 Agents</span>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>
