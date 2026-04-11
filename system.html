@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bugarttia AI - System | 9 Agent Ecosystem</title>
+  <meta name="description" content="Explore the complete Bugarttia AI agent ecosystem. 9 autonomous agents working in harmony to transform your lead generation.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bugarttia-black': '#07070A',
+            'bugarttia-charcoal': '#0E1016',
+            'bugarttia-gray': '#A7ACB8',
+            'bugarttia-neon': '#B6FF2E',
+            'bugarttia-white': '#F4F6FA',
+          },
+          fontFamily: {
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #07070A;
+      color: #F4F6FA;
+    }
+    .glass-card {
+      background: rgba(14, 16, 22, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(244, 246, 250, 0.1);
+      transition: all 0.3s ease;
+    }
+    .glass-card:hover {
+      border-color: rgba(182, 255, 46, 0.3);
+      box-shadow: 0 0 40px rgba(182, 255, 46, 0.15);
+      transform: translateY(-4px);
+    }
+    .icon-wrapper {
+      transition: transform 0.3s ease;
+    }
+    .glass-card:hover .icon-wrapper {
+      transform: scale(1.1);
+    }
+    .corner-accent {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .glass-card:hover .corner-accent {
+      opacity: 1;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Stagger delays */
+    .reveal:nth-child(1) { transition-delay: 0.05s; }
+    .reveal:nth-child(2) { transition-delay: 0.1s; }
+    .reveal:nth-child(3) { transition-delay: 0.15s; }
+    .reveal:nth-child(4) { transition-delay: 0.2s; }
+    .reveal:nth-child(5) { transition-delay: 0.25s; }
+    .reveal:nth-child(6) { transition-delay: 0.3s; }
+    .reveal:nth-child(7) { transition-delay: 0.35s; }
+    .reveal:nth-child(8) { transition-delay: 0.4s; }
+    .reveal:nth-child(9) { transition-delay: 0.45s; }
+  </style>
+</head>
+<body class="min-h-screen bg-bugarttia-black">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-bugarttia-charcoal/95 backdrop-blur-lg border-b border-white/10">
+    <div class="w-full px-6 lg:px-[7vw] h-16 lg:h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="flex items-center">
+        <span class="text-xl lg:text-2xl font-bold tracking-tight text-white">BUGARTTIA</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="/" class="text-sm font-medium text-bugarttia-gray hover:text-white transition-colors">Home</a>
+        <a href="/system.html" class="text-sm font-medium text-bugarttia-neon">System</a>
+        <a href="/#flow" class="text-sm font-medium text-bugarttia-gray hover:text-white transition-colors">Flow</a>
+        <a href="/#implementation" class="text-sm font-medium text-bugarttia-gray hover:text-white transition-colors">Implementation</a>
+        <a href="/#contact" class="text-sm font-medium text-bugarttia-gray hover:text-white transition-colors">Contact</a>
+      </div>
+
+      <!-- CTA -->
+      <div class="flex items-center gap-4">
+        <a href="/" class="hidden lg:inline-flex px-6 py-2.5 bg-bugarttia-neon text-bugarttia-charcoal font-semibold rounded-lg hover:bg-bugarttia-neon/90 transition-colors text-sm">
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- System Section -->
+  <section class="w-full pt-32 pb-24 px-6 lg:px-[7vw]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Header -->
+      <div class="text-center mb-16 reveal">
+        <div class="mb-4 flex items-center justify-center gap-3">
+          <div class="h-px w-8 bg-gradient-to-r from-bugarttia-neon/50 to-transparent"></div>
+          <span class="text-xs font-mono uppercase tracking-[0.14em] text-bugarttia-neon">The System</span>
+          <div class="h-px w-8 bg-gradient-to-l from-bugarttia-neon/50 to-transparent"></div>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-bugarttia-white tracking-tight">
+          Intelligent Agent <span class="text-bugarttia-neon">Ecosystem</span>
+        </h1>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-bugarttia-gray">
+          Nine autonomous agents working in perfect harmony to transform your lead generation.
+        </p>
+      </div>
+
+      <!-- 9-Card Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Card 1: Signal Detection -->
+        <div class="glass-card relative overflow-hidden rounded-2xl p-6 reveal">
+          <div class="text-4xl mb-4">🔍</div>
+          <h3 class="text-xl font-bold mb-2 text-bugarttia-white">Signal Detection</h3>
+          <p class="text-bugarttia-gray/70 text-sm leading-relaxed mb-4">
+            AI-powered monitoring across 100+ sources to identify high-intent prospects in real-time.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Real-time social listening</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Intent signal capture</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Multi-source aggregation</span>
+            </li>
+          </ul>
+          <div class="corner-accent absolute top-0 right-0 w-16 h-16">
+            <div class="absolute top-3 right-3 w-6 h-px bg-gradient-to-l from-bugarttia-neon/40 to-transparent"></div>
+            <div class="absolute top-3 right-3 w-px h-6 bg-gradient-to-b from-bugarttia-neon/40 to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- Card 2: Data Enrichment -->
+        <div class="glass-card relative overflow-hidden rounded-2xl p-6 reveal">
+          <div class="text-4xl mb-4">🔗</div>
+          <h3 class="text-xl font-bold mb-2 text-bugarttia-white">Data Enrichment</h3>
+          <p class="text-bugarttia-gray/70 text-sm leading-relaxed mb-4">
+            Automatically enrich lead profiles with 50+ data points from premium sources.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>50+ data attributes</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Premium data providers</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Real-time verification</span>
+            </li>
+          </ul>
+          <div class="corner-accent absolute top-0 right-0 w-16 h-16">
+            <div class="absolute top-3 right-3 w-6 h-px bg-gradient-to-l from-bugarttia-neon/40 to-transparent"></div>
+            <div class="absolute top-3 right-3 w-px h-6 bg-gradient-to-b from-bugarttia-neon/40 to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- Card 3: Qualification -->
+        <div class="glass-card relative overflow-hidden rounded-2xl p-6 reveal">
+          <div class="text-4xl mb-4">🎯</div>
+          <h3 class="text-xl font-bold mb-2 text-bugarttia-white">Qualification</h3>
+          <p class="text-bugarttia-gray/70 text-sm leading-relaxed mb-4">
+            AI-driven scoring and qualification based on your ideal customer profile.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Custom scoring models</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>ICP matching</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Automatic disqualification</span>
+            </li>
+          </ul>
+          <div class="corner-accent absolute top-0 right-0 w-16 h-16">
+            <div class="absolute top-3 right-3 w-6 h-px bg-gradient-to-l from-bugarttia-neon/40 to-transparent"></div>
+            <div class="absolute top-3 right-3 w-px h-6 bg-gradient-to-b from-bugarttia-neon/40 to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- Card 4: Smart Routing -->
+        <div class="glass-card relative overflow-hidden rounded-2xl p-6 reveal">
+          <div class="text-4xl mb-4">📡</div>
+          <h3 class="text-xl font-bold mb-2 text-bugarttia-white">Smart Routing</h3>
+          <p class="text-bugarttia-gray/70 text-sm leading-relaxed mb-4">
+            Intelligent lead distribution to the right sales rep based on territory and expertise.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Territory-based routing</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Load balancing</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Skill-based assignment</span>
+            </li>
+          </ul>
+          <div class="corner-accent absolute top-0 right-0 w-16 h-16">
+            <div class="absolute top-3 right-3 w-6 h-px bg-gradient-to-l from-bugarttia-neon/40 to-transparent"></div>
+            <div class="absolute top-3 right-3 w-px h-6 bg-gradient-to-b from-bugarttia-neon/40 to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- Card 5: Analytics -->
+        <div class="glass-card relative overflow-hidden rounded-2xl p-6 reveal">
+          <div class="text-4xl mb-4">📊</div>
+          <h3 class="text-xl font-bold mb-2 text-bugarttia-white">Analytics</h3>
+          <p class="text-bugarttia-gray/70 text-sm leading-relaxed mb-4">
+            Comprehensive analytics and insights into your lead generation performance.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Conversion tracking</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Pipeline analytics</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>ROI measurement</span>
+            </li>
+          </ul>
+          <div class="corner-accent absolute top-0 right-0 w-16 h-16">
+            <div class="absolute top-3 right-3 w-6 h-px bg-gradient-to-l from-bugarttia-neon/40 to-transparent"></div>
+            <div class="absolute top-3 right-3 w-px h-6 bg-gradient-to-b from-bugarttia-neon/40 to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- Card 6: Integration -->
+        <div class="glass-card relative overflow-hidden rounded-2xl p-6 reveal">
+          <div class="text-4xl mb-4">🔌</div>
+          <h3 class="text-xl font-bold mb-2 text-bugarttia-white">Integration</h3>
+          <p class="text-bugarttia-gray/70 text-sm leading-relaxed mb-4">
+            Seamless integration with your existing CRM and sales stack.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>CRM synchronization</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>API access</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Webhook support</span>
+            </li>
+          </ul>
+          <div class="corner-accent absolute top-0 right-0 w-16 h-16">
+            <div class="absolute top-3 right-3 w-6 h-px bg-gradient-to-l from-bugarttia-neon/40 to-transparent"></div>
+            <div class="absolute top-3 right-3 w-px h-6 bg-gradient-to-b from-bugarttia-neon/40 to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- Card 7: Amplemarket (NEW) -->
+        <div class="glass-card relative overflow-hidden rounded-2xl p-6 reveal">
+          <div class="text-4xl mb-4">🎯</div>
+          <h3 class="text-xl font-bold mb-2 text-bugarttia-white">Amplemarket</h3>
+          <p class="text-bugarttia-gray/70 text-sm leading-relaxed mb-4">
+            The premier source for initial data and elite market signals.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Premium data sources</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Deep luxury research</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Elite lead intelligence</span>
+            </li>
+          </ul>
+          <div class="corner-accent absolute top-0 right-0 w-16 h-16">
+            <div class="absolute top-3 right-3 w-6 h-px bg-gradient-to-l from-bugarttia-neon/40 to-transparent"></div>
+            <div class="absolute top-3 right-3 w-px h-6 bg-gradient-to-b from-bugarttia-neon/40 to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- Card 8: OpenClaw AI (NEW) -->
+        <div class="glass-card relative overflow-hidden rounded-2xl p-6 reveal">
+          <div class="text-4xl mb-4">🧠</div>
+          <h3 class="text-xl font-bold mb-2 text-bugarttia-white">OpenClaw AI</h3>
+          <p class="text-bugarttia-gray/70 text-sm leading-relaxed mb-4">
+            Autonomous workflow management, handling everything from data enrichment to exclusive appointment booking.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Custom reasoning logic</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Privacy-first execution</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Complete workflow control</span>
+            </li>
+          </ul>
+          <div class="corner-accent absolute top-0 right-0 w-16 h-16">
+            <div class="absolute top-3 right-3 w-6 h-px bg-gradient-to-l from-bugarttia-neon/40 to-transparent"></div>
+            <div class="absolute top-3 right-3 w-px h-6 bg-gradient-to-b from-bugarttia-neon/40 to-transparent"></div>
+          </div>
+        </div>
+
+        <!-- Card 9: Pete & Gabi (NEW) -->
+        <div class="glass-card relative overflow-hidden rounded-2xl p-6 reveal">
+          <div class="text-4xl mb-4">🎤</div>
+          <h3 class="text-xl font-bold mb-2 text-bugarttia-white">Pete & Gabi</h3>
+          <p class="text-bugarttia-gray/70 text-sm leading-relaxed mb-4">
+            Specialized human-like voice AI for high-touch telephonic service and exclusive closing.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Human-like voice interaction</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>Immediate 24/7 service</span>
+            </li>
+            <li class="flex items-start gap-2 text-sm text-bugarttia-gray/60">
+              <span class="mt-1.5 w-1 h-1 rounded-full bg-bugarttia-neon/60 shrink-0"></span>
+              <span>High-end closing capabilities</span>
+            </li>
+          </ul>
+          <div class="corner-accent absolute top-0 right-0 w-16 h-16">
+            <div class="absolute top-3 right-3 w-6 h-px bg-gradient-to-l from-bugarttia-neon/40 to-transparent"></div>
+            <div class="absolute top-3 right-3 w-px h-6 bg-gradient-to-b from-bugarttia-neon/40 to-transparent"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-16 text-center reveal">
+        <a href="/#contact" class="inline-flex items-center gap-2 px-8 py-4 bg-bugarttia-neon text-bugarttia-charcoal font-semibold rounded-lg hover:bg-bugarttia-neon/90 transition-all duration-300 hover:scale-[1.02]">
+          <span>Request a Live Demo</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="w-full py-8 px-6 lg:px-[7vw] border-t border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-bugarttia-gray text-sm">© 2026 Bugarttia AI. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="/" class="text-sm text-bugarttia-gray hover:text-white transition-colors">Home</a>
+        <a href="/system.html" class="text-sm text-bugarttia-neon">System</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Reveal Script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
