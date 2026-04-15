@@ -39,7 +39,16 @@ export default function Navigation() {
     >
       <div className="w-full px-6 lg:px-[7vw] h-16 lg:h-20 flex items-center justify-between">
         {/* Logo - LEFT */}
-        <a href="/" className="flex items-center">
+        <a
+          href="/"
+          onClick={(e) => {
+            if (window.location.pathname === '/') {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+          className="flex items-center"
+        >
           <span className="text-xl lg:text-2xl font-bold tracking-tight text-white">
             BUGARTTIA
           </span>
