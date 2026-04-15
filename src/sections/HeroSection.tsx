@@ -14,12 +14,10 @@ export default function HeroSection() {
   const bgRef = useRef<HTMLDivElement>(null);
   const sideCardRef = useRef<HTMLDivElement>(null);
 
-  // FIX 1: Entrance animation - animate H1 parent opacity
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      // Background fade
       if (bgRef.current) {
         tl.fromTo(bgRef.current, 
           { opacity: 0, scale: 1.1 }, 
@@ -28,7 +26,6 @@ export default function HeroSection() {
         );
       }
 
-      // Label animation
       if (labelRef.current) {
         tl.fromTo(labelRef.current, 
           { y: 20, opacity: 0 }, 
@@ -37,18 +34,15 @@ export default function HeroSection() {
         );
       }
 
-      // H1 animation - FIX: animate parent H1 opacity directly
       if (h1Ref.current) {
         const words = h1Ref.current.querySelectorAll('.word');
         
-        // Animate words
         tl.fromTo(words, 
           { y: 40, opacity: 0 }, 
           { y: 0, opacity: 1, duration: 0.7, stagger: 0.04 }, 
           0.3
         );
         
-        // FIX 1: Also animate parent H1 opacity
         tl.fromTo(h1Ref.current, 
           { opacity: 0 }, 
           { opacity: 1, duration: 0.7 }, 
@@ -56,7 +50,6 @@ export default function HeroSection() {
         );
       }
 
-      // Paragraph animation
       if (paragraphRef.current) {
         tl.fromTo(paragraphRef.current, 
           { y: 30, opacity: 0 }, 
@@ -65,7 +58,6 @@ export default function HeroSection() {
         );
       }
 
-      // CTAs animation
       if (ctaRef.current) {
         tl.fromTo(ctaRef.current.children, 
           { y: 20, opacity: 0 }, 
@@ -74,7 +66,6 @@ export default function HeroSection() {
         );
       }
 
-      // Side card animation
       if (sideCardRef.current) {
         tl.fromTo(sideCardRef.current, 
           { x: 50, opacity: 0 }, 
@@ -87,14 +78,12 @@ export default function HeroSection() {
     return () => ctx.revert();
   }, []);
 
-  // Scroll-triggered parallax (desktop only)
   useLayoutEffect(() => {
     if (window.innerWidth < 1024) return;
 
     const ctx = gsap.context(() => {
       const triggers: ScrollTrigger[] = [];
 
-      // Parallax for content
       if (contentRef.current) {
         const st = ScrollTrigger.create({
           trigger: sectionRef.current,
@@ -123,7 +112,7 @@ export default function HeroSection() {
       ref={sectionRef}
       className="relative w-full min-h-screen overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background */}
       <div 
         ref={bgRef}
         className="absolute inset-0 z-0"
@@ -136,12 +125,12 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-bugarttia-charcoal/80 via-bugarttia-charcoal/50 to-bugarttia-charcoal" />
       </div>
 
-      {/* Content Container - FIX 2: flex-col lg:flex-row */}
+      {/* Content */}
       <div 
         ref={contentRef}
         className="relative z-10 w-full min-h-screen lg:h-full flex flex-col lg:flex-row items-stretch lg:items-center py-20 lg:py-0 px-6 lg:px-[7vw]"
       >
-        {/* Main Content */}
+        {/* Main */}
         <div className="flex-1 flex flex-col justify-center max-w-3xl lg:max-w-2xl">
           {/* Label */}
           <span 
@@ -151,7 +140,7 @@ export default function HeroSection() {
             Agentic Workflows
           </span>
 
-          {/* H1 - FIX 1: Will be animated properly */}
+          {/* Heading */}
           <h1 
             ref={h1Ref}
             className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
@@ -187,7 +176,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Side Card - FIX 2: block lg:absolute (visible on mobile) */}
+        {/* Side Card */}
         <div 
           ref={sideCardRef}
           className="block lg:absolute static lg:right-[7vw] lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-[34vw] lg:max-w-md h-auto lg:min-h-[400px] lg:max-h-[56vh] glass-card rounded-2xl p-6 lg:p-8 shadow-card mt-10 lg:mt-0"

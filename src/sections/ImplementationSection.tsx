@@ -74,11 +74,9 @@ export default function ImplementationSection() {
       id="implementation"
       className="relative w-full py-24 lg:py-32 px-6 lg:px-[7vw]"
     >
-      {/* Background subtle gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bugarttia-neon/5 to-transparent pointer-events-none" />
-
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Headline */}
+        {/* Header */}
         <div ref={headlineRef} className="text-center mb-16">
           <span className="inline-block text-bugarttia-neon text-sm font-semibold tracking-widest uppercase mb-4">
             Strategic Deployment
@@ -92,12 +90,7 @@ export default function ImplementationSection() {
           </p>
         </div>
 
-        {/* Timeline Container */}
-        <div 
-          ref={stepsRef}
-          className="glass-card rounded-3xl p-6 lg:p-10"
-        >
-          {/* FIX 3: Mobile-first vertical layout with grid */}
+        <div ref={stepsRef} className="glass-card rounded-3xl p-6 lg:p-10">
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-4 lg:items-stretch lg:justify-between lg:h-full overflow-visible lg:overflow-x-auto scrollbar-hide">
             {timelineSteps.map((step, index) => {
               const isLast = index === timelineSteps.length - 1;
@@ -107,7 +100,6 @@ export default function ImplementationSection() {
                   key={step.day}
                   className="timeline-step grid grid-cols-[44px_1fr] gap-x-4 lg:flex lg:flex-col lg:items-center lg:flex-1 lg:min-w-0 lg:gap-y-0 relative group"
                 >
-                  {/* Circle with number */}
                   <div 
                     className={`circle col-start-1 row-start-1 w-11 h-11 lg:w-16 lg:h-16 rounded-full flex items-center justify-center lg:mb-4 z-10 transition-all duration-300 ${
                       isLast 
@@ -120,17 +112,14 @@ export default function ImplementationSection() {
                     </span>
                   </div>
 
-                  {/* Title */}
                   <span className="col-start-2 row-start-1 self-center font-bold text-[15px] lg:text-base text-white text-left lg:text-center leading-tight">
                     {step.title}
                   </span>
 
-                  {/* Description */}
                   <span className="col-start-2 row-start-2 text-bugarttia-gray/60 text-[13px] lg:text-sm text-left lg:text-center mt-0.5">
                     {step.desc}
                   </span>
 
-                  {/* Desktop horizontal connector line (hidden on mobile) */}
                   {!isLast && (
                     <div className="hidden lg:block absolute top-7 lg:top-8 left-[calc(50%+28px)] lg:left-[calc(50%+32px)] w-[calc(100%-56px)] lg:w-[calc(100%-64px)] h-px bg-gradient-to-r from-white/20 to-transparent" />
                   )}
