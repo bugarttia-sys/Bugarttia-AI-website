@@ -90,6 +90,9 @@ export default function SystemFlowSection() {
     >
       <div className="relative z-10 max-w-7xl mx-auto">
         <div ref={headlineRef} className="text-center mb-16">
+          <span className="inline-block text-bugarttia-neon text-sm font-semibold tracking-widest uppercase mb-4">
+            End-to-End AI Workflow Automation
+          </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Lead <span className="text-bugarttia-neon">→</span> Qualified <span className="text-bugarttia-neon">→</span> Booked.
             <br />

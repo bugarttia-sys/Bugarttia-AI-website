@@ -137,7 +137,7 @@ export default function HeroSection() {
             ref={labelRef}
             className="inline-block text-bugarttia-neon text-sm font-semibold tracking-widest uppercase mb-6"
           >
-            Agentic Workflows
+            Agentic AI for Lead Generation
           </span>
 
           {/* Heading */}
@@ -146,11 +146,14 @@ export default function HeroSection() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
           >
             <span className="word inline-block">Agentic</span>{' '}
-            <span className="word inline-block">Workflows.</span>
+            <span className="word inline-block">AI</span>{' '}
+            <span className="word inline-block">for</span>{' '}
+            <span className="word inline-block">Lead</span>{' '}
+            <span className="word inline-block">Generation.</span>
             <br />
-            <span className="word inline-block text-bugarttia-neon">Built</span>{' '}
-            <span className="word inline-block text-bugarttia-neon">to</span>{' '}
-            <span className="word inline-block text-bugarttia-neon">Convert.</span>
+            <span className="word inline-block text-bugarttia-neon">Autonomous.</span>{' '}
+            <span className="word inline-block text-bugarttia-neon">Scalable.</span>{' '}
+            <span className="word inline-block text-bugarttia-neon">Revenue-Ready.</span>
           </h1>
 
           {/* Paragraph */}
@@ -158,8 +161,9 @@ export default function HeroSection() {
             ref={paragraphRef}
             className="text-lg text-bugarttia-gray/80 mb-8 max-w-xl"
           >
-            A multi-agent system that discovers leads, enriches data, personalizes outreach, 
-            and books meetings—while you sleep.
+            Our AI lead generation systems combine autonomous AI agents for business with 
+            AI workflow automation to discover, enrich, and convert prospects—24/7 without 
+            human overhead.
           </p>
 
           {/* CTAs */}
@@ -188,7 +192,7 @@ export default function HeroSection() {
             <span className="text-xs font-semibold tracking-wider text-bugarttia-gray uppercase">24/7 Revenue Engine</span>
           </div>
           
-          <h3 className="text-xl font-bold mb-4">How It Works</h3>
+          <h3 className="text-xl font-bold mb-4">How Our AI Automation Works</h3>
           
           <ul className="space-y-3">
             <li className="flex items-start gap-3">

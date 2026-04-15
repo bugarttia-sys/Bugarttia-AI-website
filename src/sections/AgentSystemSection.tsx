@@ -41,8 +41,8 @@ export default function AgentSystemSection() {
     <section ref={sectionRef} id="system" className="w-full py-24 lg:py-32 px-6 lg:px-[7vw]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-bugarttia-neon text-sm font-semibold tracking-widest uppercase">The System</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4">Intelligent Agent Ecosystem</h2>
+          <span className="text-bugarttia-neon text-sm font-semibold tracking-widest uppercase">AI Lead Generation Systems</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4">Autonomous AI Agents for Business</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {agents.map((agent) => (

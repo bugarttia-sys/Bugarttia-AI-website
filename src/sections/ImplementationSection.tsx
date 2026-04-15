@@ -79,14 +79,14 @@ export default function ImplementationSection() {
         {/* Header */}
         <div ref={headlineRef} className="text-center mb-16">
           <span className="inline-block text-bugarttia-neon text-sm font-semibold tracking-widest uppercase mb-4">
-            Strategic Deployment
+            AI Automation for Sales
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            7 Days to <span className="text-bugarttia-neon">Revenue Deployment.</span>
+            Deployed in 7 Days. <span className="text-bugarttia-neon">Selling in 8.</span>
           </h2>
           <p className="text-lg text-bugarttia-gray/70 max-w-2xl mx-auto">
-            Rapid deployment. Strategic precision. We integrate our autonomous agents 
-            into your ecosystem with zero friction and maximum speed to value.
+            Our AI automation for sales integrates seamlessly into your ecosystem, 
+            delivering qualified leads and booked meetings with zero friction.
           </p>
         </div>
 

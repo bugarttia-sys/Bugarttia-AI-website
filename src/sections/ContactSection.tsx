@@ -46,10 +46,11 @@ export default function ContactSection() {
     <section ref={sectionRef} id="contact" className="w-full py-24 lg:py-32 px-6 lg:px-[7vw]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16 animate-in">
-          <span className="text-bugarttia-neon text-sm font-semibold tracking-widest uppercase">Contact</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">Ready to Deploy?</h2>
+          <span className="text-bugarttia-neon text-sm font-semibold tracking-widest uppercase">Start Your AI Automation</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">Ready to Scale with Agentic AI?</h2>
           <p className="text-lg text-bugarttia-gray/70">
-            Book a strategy call or send us a message. We'll respond within 24 hours.
+            Book a strategy call and discover how our AI lead generation systems 
+            can fill your pipeline on autopilot.
           </p>
         </div>
 

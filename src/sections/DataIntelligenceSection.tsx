@@ -45,10 +45,10 @@ export default function DataIntelligenceSection() {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-bugarttia-neon text-sm font-semibold tracking-widest uppercase">
-            Intelligence
+            AI Workflow Automation
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4">
-            Data-Driven Insights
+            Intelligence That Drives Revenue
           </h2>
         </div>
 
