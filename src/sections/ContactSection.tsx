@@ -45,7 +45,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="w-full py-24 px-6 lg:px-[7vw]">
+    <section ref={sectionRef} id="contact" className="w-full py-24 lg:py-32 px-6 lg:px-[7vw]">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16 animate-in">
           <span className="text-bugarttia-neon text-sm font-semibold tracking-widest uppercase">Contact</span>

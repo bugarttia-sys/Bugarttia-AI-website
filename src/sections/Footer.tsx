@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="w-full py-12 px-6 lg:px-[7vw] border-t border-white/10">
+    <footer className="w-full py-12 lg:py-16 px-6 lg:px-[7vw] border-t border-white/10">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-2">
           <span className="text-xl font-bold">BUGARTTIA</span>

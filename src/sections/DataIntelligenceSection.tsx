@@ -40,19 +40,19 @@ export default function DataIntelligenceSection() {
   return (
     <section
       ref={sectionRef}
-      className="hidden lg:block w-full py-24 px-6 lg:px-[7vw]"
+      className="hidden lg:block w-full py-24 lg:py-32 px-6 lg:px-[7vw]"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-bugarttia-neon text-sm font-semibold tracking-widest uppercase">
             Intelligence
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4">
             Data-Driven Insights
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-3 gap-6 lg:gap-8">
           {photos.map((photo) => (
             <div
               key={photo.src}

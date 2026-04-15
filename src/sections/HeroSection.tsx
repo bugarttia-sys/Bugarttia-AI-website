@@ -142,7 +142,7 @@ export default function HeroSection() {
         className="relative z-10 w-full min-h-screen lg:h-full flex flex-col lg:flex-row items-stretch lg:items-center py-20 lg:py-0 px-6 lg:px-[7vw]"
       >
         {/* Main Content */}
-        <div className="flex-1 flex flex-col justify-center max-w-3xl">
+        <div className="flex-1 flex flex-col justify-center max-w-3xl lg:max-w-2xl">
           {/* Label */}
           <span 
             ref={labelRef}
@@ -174,7 +174,7 @@ export default function HeroSection() {
           </p>
 
           {/* CTAs */}
-          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4">
+          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 lg:gap-6">
             <button className="px-8 py-4 bg-bugarttia-neon text-bugarttia-charcoal font-semibold rounded-xl hover:bg-bugarttia-neon/90 transition-colors flex items-center justify-center gap-2">
               Book a Strategy Call
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -190,7 +190,7 @@ export default function HeroSection() {
         {/* Side Card - FIX 2: block lg:absolute (visible on mobile) */}
         <div 
           ref={sideCardRef}
-          className="block lg:absolute static lg:right-[7vw] lg:top-[22vh] w-full lg:w-[34vw] lg:max-w-md h-auto lg:min-h-[400px] lg:max-h-[56vh] glass-card rounded-2xl p-6 lg:p-7 shadow-card mt-10 lg:mt-0"
+          className="block lg:absolute static lg:right-[7vw] lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-[34vw] lg:max-w-md h-auto lg:min-h-[400px] lg:max-h-[56vh] glass-card rounded-2xl p-6 lg:p-8 shadow-card mt-10 lg:mt-0"
         >
           <div className="flex items-center gap-2 mb-4">
             <svg className="w-5 h-5 text-bugarttia-neon" fill="currentColor" viewBox="0 0 20 20">
