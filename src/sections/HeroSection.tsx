@@ -190,7 +190,7 @@ export default function HeroSection() {
         {/* Side Card - FIX 2: block lg:absolute (visible on mobile) */}
         <div 
           ref={sideCardRef}
-          className="block lg:absolute static lg:right-[7vw] lg:top-[22vh] w-full lg:w-[34vw] h-auto lg:min-h-[400px] lg:max-h-[56vh] glass-card rounded-2xl p-6 lg:p-7 shadow-card mt-10 lg:mt-0"
+          className="block lg:absolute static lg:right-[7vw] lg:top-[22vh] w-full lg:w-[34vw] lg:max-w-md h-auto lg:min-h-[400px] lg:max-h-[56vh] glass-card rounded-2xl p-6 lg:p-7 shadow-card mt-10 lg:mt-0"
         >
           <div className="flex items-center gap-2 mb-4">
             <svg className="w-5 h-5 text-bugarttia-neon" fill="currentColor" viewBox="0 0 20 20">

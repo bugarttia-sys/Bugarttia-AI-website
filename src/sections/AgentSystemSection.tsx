@@ -47,11 +47,11 @@ export default function AgentSystemSection() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {agents.map((agent) => (
-            <div key={agent.title} className="agent-card glass-card p-6 rounded-2xl hover:bg-white/10 transition-colors overflow-hidden">
+            <div key={agent.title} className="agent-card glass-card p-6 lg:p-8 rounded-2xl hover:bg-white/10 transition-colors overflow-hidden">
               <img 
                 src={agent.image} 
                 alt={agent.title}
-                className="w-full h-48 object-cover rounded-xl mb-4 hidden lg:block"
+                className="w-full h-48 lg:h-56 object-cover rounded-xl mb-4 hidden lg:block"
               />
               <div className="text-4xl mb-4">{agent.icon}</div>
               <h3 className="text-xl font-bold mb-2">{agent.title}</h3>

@@ -15,11 +15,19 @@ export default function Navigation() {
 
   const navLinks = [
     { label: 'System', href: '#system' },
-    { label: 'Flow', href: '#flow' },
+    { label: 'Flow', href: '#flow', targetId: 'system-flow' },
     { label: 'Pricing', href: '#pricing' },
     { label: 'Implementation', href: '#implementation' },
     { label: 'Contact', href: '#contact' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, link: typeof navLinks[0]) => {
+    if (window.innerWidth >= 1024 && link.targetId) {
+      e.preventDefault();
+      const el = document.getElementById(link.targetId);
+      el?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav 
@@ -43,6 +51,7 @@ export default function Navigation() {
             <a 
               key={link.label}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link)}
               className="text-sm font-medium text-bugarttia-gray hover:text-white transition-colors"
             >
               {link.label}

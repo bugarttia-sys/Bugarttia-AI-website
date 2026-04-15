@@ -109,30 +109,30 @@ export default function ImplementationSection() {
                 >
                   {/* Circle with number */}
                   <div 
-                    className={`circle col-start-1 row-start-1 w-11 h-11 lg:w-14 lg:h-14 rounded-full flex items-center justify-center lg:mb-4 z-10 transition-all duration-300 ${
+                    className={`circle col-start-1 row-start-1 w-11 h-11 lg:w-16 lg:h-16 rounded-full flex items-center justify-center lg:mb-4 z-10 transition-all duration-300 ${
                       isLast 
                         ? 'bg-bugarttia-neon shadow-glow' 
                         : 'bg-bugarttia-charcoal border border-white/10 group-hover:border-bugarttia-neon/50'
                     }`}
                   >
-                    <span className="font-bold text-base lg:text-lg text-white">
+                    <span className="font-bold text-base lg:text-xl text-white">
                       {step.day}
                     </span>
                   </div>
 
                   {/* Title */}
-                  <span className="col-start-2 row-start-1 self-center font-bold text-[15px] lg:text-xs text-white text-left lg:text-center leading-tight">
+                  <span className="col-start-2 row-start-1 self-center font-bold text-[15px] lg:text-base text-white text-left lg:text-center leading-tight">
                     {step.title}
                   </span>
 
                   {/* Description */}
-                  <span className="col-start-2 row-start-2 text-bugarttia-gray/60 text-[13px] lg:text-[10px] text-left lg:text-center mt-0.5">
+                  <span className="col-start-2 row-start-2 text-bugarttia-gray/60 text-[13px] lg:text-sm text-left lg:text-center mt-0.5">
                     {step.desc}
                   </span>
 
                   {/* Desktop horizontal connector line (hidden on mobile) */}
                   {!isLast && (
-                    <div className="hidden lg:block absolute top-7 left-[calc(50%+28px)] w-[calc(100%-56px)] h-px bg-gradient-to-r from-white/20 to-transparent" />
+                    <div className="hidden lg:block absolute top-7 lg:top-8 left-[calc(50%+28px)] lg:left-[calc(50%+32px)] w-[calc(100%-56px)] lg:w-[calc(100%-64px)] h-px bg-gradient-to-r from-white/20 to-transparent" />
                   )}
                 </div>
               );

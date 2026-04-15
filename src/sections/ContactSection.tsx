@@ -106,7 +106,7 @@ export default function ContactSection() {
           
           <button 
             type="submit"
-            className="w-full px-8 py-4 bg-bugarttia-neon text-bugarttia-charcoal font-semibold rounded-xl hover:bg-bugarttia-neon/90 transition-colors flex items-center justify-center gap-2"
+            className="w-full lg:w-auto lg:px-12 px-8 py-4 bg-bugarttia-neon text-bugarttia-charcoal font-semibold rounded-xl hover:bg-bugarttia-neon/90 transition-colors flex items-center justify-center gap-2 mx-auto"
           >
             Send Message
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

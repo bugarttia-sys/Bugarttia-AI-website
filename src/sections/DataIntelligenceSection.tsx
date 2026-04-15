@@ -56,7 +56,7 @@ export default function DataIntelligenceSection() {
           {photos.map((photo) => (
             <div
               key={photo.src}
-              className="photo-item relative overflow-hidden rounded-2xl aspect-[4/3]"
+              className="photo-item relative overflow-hidden rounded-2xl aspect-[4/3] lg:aspect-[16/9]"
             >
               <img
                 src={photo.src}
