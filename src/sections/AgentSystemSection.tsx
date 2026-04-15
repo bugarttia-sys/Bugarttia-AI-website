@@ -5,9 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const agents = [
-  { icon: '🔍', title: 'Signal Detection', desc: 'High-intent signals' },
-  { icon: '🔗', title: 'Data Enrichment', desc: '360° profiles' },
-  { icon: '🎯', title: 'Qualification', desc: 'AI-validated scoring' },
+  { icon: '🔍', title: 'Signal Detection', desc: 'High-intent signals', image: '/images/city_angle_02.jpg' },
+  { icon: '🔗', title: 'Data Enrichment', desc: '360° profiles', image: '/images/city_street_03.jpg' },
+  { icon: '🎯', title: 'Qualification', desc: 'AI-validated scoring', image: '/images/enrichment_office.jpg' },
 ];
 
 export default function AgentSystemSection() {
@@ -47,7 +47,12 @@ export default function AgentSystemSection() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {agents.map((agent) => (
-            <div key={agent.title} className="agent-card glass-card p-6 rounded-2xl hover:bg-white/10 transition-colors">
+            <div key={agent.title} className="agent-card glass-card p-6 rounded-2xl hover:bg-white/10 transition-colors overflow-hidden">
+              <img 
+                src={agent.image} 
+                alt={agent.title}
+                className="w-full h-48 object-cover rounded-xl mb-4 hidden lg:block"
+              />
               <div className="text-4xl mb-4">{agent.icon}</div>
               <h3 className="text-xl font-bold mb-2">{agent.title}</h3>
               <p className="text-bugarttia-gray/70">{agent.desc}</p>
