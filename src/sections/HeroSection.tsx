@@ -210,7 +210,7 @@ export default function HeroSection() {
           </ul>
           
           <a href="#" className="inline-flex items-center gap-1 text-bugarttia-neon text-sm font-semibold mt-6 hover:gap-2 transition-all">
-            Explore the 9 agents
+            Explore the 6 agents
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
